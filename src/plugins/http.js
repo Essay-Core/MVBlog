@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-//axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = '/queue-admin'
 axios.defaults.timeout = 1000 * 60 * 2; //超时时间
 axios.defaults.withCredentials = true; //让ajax携带cookie
 // axios.defaults.headers.post['Content-Type'] = 'multipart/form-data;charset=utf-8';

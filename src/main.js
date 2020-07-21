@@ -6,6 +6,8 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import http from '../src/plugins/http'
+import subBread from "./subcom/subBread";
+
 // import MyHttpServer from "../static/http";
 // import './utils/filter_utils.js'
 
@@ -13,6 +15,7 @@ import http from '../src/plugins/http'
 Vue.use(ElementUI);
 Vue.prototype.$http = http
 Vue.config.productionTip = false
+Vue.component(subBread.name,subBread)
 
 /* eslint-disable no-new */
 new Vue({

@@ -58,7 +58,8 @@
         //用户注册
         curUserMsg:{},
         resigterDiaIsShow:false,
-        formLabelWidth: "100px",
+        formLabelWidth: '100px',
+        form: {},
       };
     },
     created() {

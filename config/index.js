@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
       '/queue-admin': {  // 使用"/queue-admin"来代替 API头部，可随意命名
         //target: 'http://192.168.11.12:8080',  // 源地址 本地开发的API头部
-        target: "http://192.168.0.155:8081",  // 配置到服务器后端的API头部
+        target: "http://localhost:8082",  // 配置到服务器后端的API头部
         pathRewrite: {
           '^/queue-admin': ''  // 路径重写，第一个与上面相同，第二个/queue-admin 为server.context-path（服务器的上下文）
         },

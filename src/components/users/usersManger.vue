@@ -114,7 +114,7 @@
         const {code, data, flag, message, total} = res.data
         if (code === 20000 && flag) {
           this.$message.success(message)
-          this.dialogFormVisibleEdit = false
+          this.dialogFormVisibleEditRight = false
         } else {
           this.$message.error(message)
         }

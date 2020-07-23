@@ -2,20 +2,13 @@
   <div>
     <subBread level_1="文章管理" level_2="发表文章"></subBread>
     <div style="margin-bottom: 20px;">
-      <el-button size="small" @click="addTab(editableTabsValue)">
-        add tab
-      </el-button>
     </div>
-    <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
-      <el-tab-pane
-        v-for="(item, index) in editableTabs"
-        :key="item.name"
-        :label="item.title"
-        :name="item.name"
-      >
-        {{item.content}}
-      </el-tab-pane>
-    </el-tabs>
+    <mavon-editor
+      class="editor"
+      v-model="value"
+                  @save="saveDoc"
+                  @change="updateDoc"
+                  ref="editor"/>
   </div>
 
 </template>
@@ -25,44 +18,18 @@
     name: "publishArtical",
     data() {
       return {
-        editableTabsValue: '2',
-        editableTabs: [{
-          title: 'Tab 1',
-          name: '1',
-          content: 'Tab 1 content'
-        }, {
-          title: 'Tab 2',
-          name: '2',
-          content: 'Tab 2 content'
-        }],
-        tabIndex: 2
+        value: "",
+        editableTabsValue: '2'
       }
     },
     methods: {
-      addTab(targetName) {
-        let newTabName = ++this.tabIndex + '';
-        this.editableTabs.push({
-          title: 'New Tab',
-          name: newTabName,
-          content: 'New Tab content'
-        });
-        this.editableTabsValue = newTabName;
+      saveDoc(markdown, html){
+        console.log("markdown内容: " + markdown);
+        console.log("html内容:" + html);
       },
-      removeTab(targetName) {
-        let tabs = this.editableTabs;
-        let activeName = this.editableTabsValue;
-        if (activeName === targetName) {
-          tabs.forEach((tab, index) => {
-            if (tab.name === targetName) {
-              let nextTab = tabs[index + 1] || tabs[index - 1];
-              if (nextTab) {
-                activeName = nextTab.name;
-              }
-            }
-          });
-        }
-        this.editableTabsValue = activeName;
-        this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+      updateDoc(markdown, html){
+        // console.log("markdown内容: " + markdown);
+        // console.log("html内容:" + html);
       }
     }
 
@@ -70,5 +37,7 @@
 </script>
 
 <style scoped>
-
+  .editor{
+    height: 800px;
+  }
 </style>
